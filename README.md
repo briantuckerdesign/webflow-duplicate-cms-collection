@@ -4,7 +4,7 @@
 
 ### Install dependencies
 
-You need Bun to run this project. You can install it[here](https://bun.sh/install).
+You need Bun to run this project. You can install it [here](https://bun.sh/install).
 
 ```bash
 bun install
