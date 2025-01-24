@@ -1,0 +1,21 @@
+{
+  "name": "webflow-duplicate-cms-collection",
+  "version": "1.0.0",
+  "description": "A simple CLI tool to duplicate a Webflow CMS collection",
+  "module": "index.ts",
+  "type": "module",
+  "scripts": {
+    "start": "bun run src/index.ts",
+    "setup": "bun run src/init.ts"
+  },
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  },
+  "dependencies": {
+    "@clack/prompts": "^0.9.1",
+    "picocolors": "^1.1.1"
+  }
+}
