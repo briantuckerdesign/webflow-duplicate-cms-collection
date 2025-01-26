@@ -1,12 +1,11 @@
 {
-  "name": "webflow-duplicate-cms-collection",
+  "name": "webflow-cli-toolbelt",
   "version": "1.0.0",
-  "description": "A simple CLI tool to duplicate a Webflow CMS collection",
+  "description": "A CLI multitool for Webflow API",
   "module": "index.ts",
   "type": "module",
   "scripts": {
-    "start": "bun run src/index.ts",
-    "setup": "bun run src/init.ts"
+    "start": "bun run src/index.ts"
   },
   "devDependencies": {
     "@types/bun": "latest"
@@ -16,6 +15,7 @@
   },
   "dependencies": {
     "@clack/prompts": "^0.9.1",
-    "picocolors": "^1.1.1"
+    "picocolors": "^1.1.1",
+    "webflow-api": "^3.1.0"
   }
 }

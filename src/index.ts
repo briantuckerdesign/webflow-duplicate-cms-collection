@@ -1,38 +1,52 @@
-import { duplicateCollection } from "./duplicate-collection";
-import { initConfig } from "./init-config";
-import { selectCollection } from "./select-collection";
-import { confirm } from "./utils/confirm";
-import { ui } from "./utils/ui";
-import type { Config } from "./types";
+/**
+ * menu
+ *   - copy collection (does not support reference at this time)
+ *   - sync collections
+ *   - publish site
+ *   - delete all items
+ *       - confirm
+ */
 
-async function main() {
+import { tools } from "./tools";
+import { ui } from "./ui";
+import { handleCancel } from "./utils/handle-cancel";
+
+export async function mainMenu() {
   try {
-    ui.prompt.intro("Webflow Duplicate CMS Collection");
-    ui.spinner.start("Loading...");
-    // Get data from end points
-    const config = await initConfig();
-    ui.spinner.stop("Config loaded.");
+    const menu = await ui.prompt.select({
+      message: "What would you like to do?",
+      options: [
+        { value: "copyCollection", label: "Copy collection" },
+        { value: "syncCollections", label: "Sync collections" },
+        { value: "publishSite", label: "Publish site" },
+        { value: "deleteAllItems", label: "Delete all items" },
+        { value: "exit", label: "Exit", hint: "Bye!" },
+      ],
+    });
 
-    await duplicationFlow(config);
+    await handleCancel(menu);
+
+    switch (menu) {
+      case "copyCollection":
+        await tools.copyCollection();
+        break;
+      // case "syncCollections":
+      //   await tools.syncCollections();
+      //   break;
+      // case "publishSite":
+      //   await tools.publishSite();
+      //   break;
+      // case "deleteAllItems":
+      //   await tools.deleteAllItems();
+      //   break;
+      default:
+        ui.prompt.outro("See ya later! 👋");
+        process.exit(0);
+    }
   } catch (error) {
-    console.log("Error: ", error);
-    process.exit(1);
+    ui.prompt.log.error("Error running main menu.");
+    process.exit(0);
   }
 }
 
-main();
-
-async function duplicationFlow(config: Config) {
-  // Select collection from source
-  config.source.collectionDetails = await selectCollection(false, config);
-
-  // Ask user to confirm
-  await confirm(config);
-
-  // Duplicate selected collection to destination
-  await duplicateCollection(config);
-
-  await confirm(config, "Do you want to duplicate another collection?");
-
-  duplicationFlow(config);
-}
+mainMenu();
