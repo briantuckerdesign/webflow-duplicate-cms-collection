@@ -19,14 +19,16 @@ import { localState } from "./local-state";
  * - If switched back to createItem, it works to create items but not publish them, and I can't get publishing to work on those staged items.
  *
  * Main todos:
- * - TODO: Styling to separate tool start/stop
- * - TODO: Error handling assessment
+ * - TODO: Fix publishing issue
  * - TODO: Fix slug issue
  *
  */
 
 export async function copyCollection() {
   try {
+    ui.prompt.log.info("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~`");
+    ui.prompt.log.success(`🔨 ${ui.format.bold("Copy Collection")}`);
+
     await disclaimer();
 
     await selectSites();
@@ -48,6 +50,7 @@ export async function copyCollection() {
     await duplicateItems();
 
     ui.prompt.log.success("🥳 Collection copied!");
+    ui.prompt.log.info("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~`");
 
     await mainMenu();
   } catch (error) {

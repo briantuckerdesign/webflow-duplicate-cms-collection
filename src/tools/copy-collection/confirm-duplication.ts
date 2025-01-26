@@ -4,10 +4,16 @@ import { handleCancel } from "../../utils/handle-cancel";
 import { localState } from "./local-state";
 
 export async function confirmItemDuplication() {
-  const copyItems = await ui.prompt.confirm({
-    message: "Duplicate items too?",
-  });
-  await handleCancel(copyItems, { destination: mainMenu });
+  try {
+    const copyItems = await ui.prompt.confirm({
+      message: "Duplicate items too?",
+    });
+    await handleCancel(copyItems, { destination: mainMenu });
 
-  if (copyItems) localState.duplicateItems = true;
+    if (copyItems) localState.duplicateItems = true;
+  } catch (error) {
+    ui.prompt.log.error("❌ There was an error confirming item duplication");
+    console.error(error);
+    process.exit(0);
+  }
 }
