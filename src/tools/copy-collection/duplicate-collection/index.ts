@@ -1,5 +1,4 @@
-import { mainMenu } from "../..";
-import { ui } from "../../ui";
+import { ui } from "../../../ui";
 import { createCollection } from "./create-collection";
 import { createFields } from "./create-fields";
 

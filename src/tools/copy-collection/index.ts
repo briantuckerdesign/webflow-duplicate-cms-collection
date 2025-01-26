@@ -10,7 +10,6 @@ import { determineSlug } from "./determine-slug";
 import { getSourceCollectionDetails } from "./get-source-collection-details";
 import { mainMenu } from "../..";
 import { getSites } from "./get-sites";
-import { localState } from "./local-state";
 
 /**
  * Where I left off:

@@ -1,6 +1,6 @@
 import type { Field } from "webflow-api/api";
-import { ui } from "../../ui";
-import { localState } from "./local-state";
+import { ui } from "../../../ui";
+import { localState } from "../local-state";
 
 export async function createFields() {
   try {
