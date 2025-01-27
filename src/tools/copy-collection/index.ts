@@ -14,13 +14,16 @@ import { getSites } from "./get-sites";
 /**
  * Where I left off:
  *
- * - I switched back to createItemLive, and it's giving me 404, which makes me think it's site id related, but could be wrong
- * - If switched back to createItem, it works to create items but not publish them, and I can't get publishing to work on those staged items.
- *
  * Main todos:
- * - TODO: Fix publishing issue
+ * - TODO: Fix publishing issue, it gives 404 on very much existing items
  * - TODO: Fix slug issue
  *
+ * V2:
+ * - support for reference fields
+ *        - concern: referenced item ids won't exist at target, match by slug/overwrite ids? wait maybe im not thinking right, reconsider
+ *        - when failed, options: skip field, selct a different collection to copy, or cancel
+ *                   - OR ask if they want to duplicate the referenced collection first?
+ *        - is it possible to auto find the referenced collection, or do we need to prompt the user to select it?
  */
 
 export async function copyCollection() {

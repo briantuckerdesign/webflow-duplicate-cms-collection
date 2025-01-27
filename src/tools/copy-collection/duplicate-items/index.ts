@@ -14,7 +14,7 @@ export async function duplicateItems() {
 
     await createItems();
 
-    await publishItems();
+    // await publishItems(); TOOD: fix publishing
   } catch (error) {
     ui.prompt.log.error("❌ There was an error duplicating the items");
     console.error(error);

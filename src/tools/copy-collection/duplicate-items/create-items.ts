@@ -17,7 +17,7 @@ export async function createItems() {
       }
     );
     localState.destination.items =
-      (await localState.destination.webflow.collections.items.createItemLive(
+      (await localState.destination.webflow.collections.items.createItem(
         localState.destination.collection.id,
         localState.source.items
       )) as CollectionItemList;

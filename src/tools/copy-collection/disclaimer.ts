@@ -7,6 +7,7 @@ export async function disclaimer() {
   try {
     ui.prompt.log.info("Important disclaimers:");
     ui.prompt.log.info(" - Reference fields are not supported at this time");
+    ui.prompt.log.info(" - Localization is not supported at this time");
     ui.prompt.log.info(" - Field constraints are not copied");
 
     const disclaimer = await ui.prompt.confirm({
